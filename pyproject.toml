@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "market-sizing-kit"
+version = "0.1.0"
+description = "Transparent TAM/SAM/SOM market sizing: driver trees, ranges, tornado charts, Monte Carlo and live Excel export."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Vincent R. Freund" }]
+dependencies = ["numpy>=1.24", "pandas>=2.0", "matplotlib>=3.7", "pyyaml>=6", "openpyxl>=3.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+msk = "market_sizing.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

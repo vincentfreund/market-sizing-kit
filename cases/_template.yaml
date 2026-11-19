@@ -1,0 +1,36 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Market sizing case template
+#
+# Each approach is a chain of drivers that MULTIPLY. Give every driver a
+# low / base / high value and write down where the number comes from.
+# Percentages are written as decimals (12% → 0.12).
+# ─────────────────────────────────────────────────────────────────────────────
+name: My market
+question: How big is the annual market for X in Y?
+currency: EUR
+year: 2026
+primary: bottom_up          # which approach defines the TAM for the funnel
+
+notes: >
+  Scope: what is in and out (e.g. B2C only, excl. VAT, Germany only).
+
+approaches:
+  top_down:
+    label: Top-down (demand side)
+    drivers:
+      - {name: Population,            low: 1,   base: 1,   high: 1,   unit: people,   source: "TODO"}
+      - {name: Share of target group, low: 0.1, base: 0.2, high: 0.3, unit: "%",      source: "TODO"}
+      - {name: Purchases per year,    low: 1,   base: 2,   high: 3,   unit: "#/yr",   source: "TODO"}
+      - {name: Price per purchase,    low: 10,  base: 12,  high: 15,  unit: EUR,      source: "TODO"}
+
+  bottom_up:
+    label: Bottom-up (supply side)
+    drivers:
+      - {name: Number of outlets,     low: 1,   base: 1,   high: 1,   unit: "#",      source: "TODO"}
+      - {name: Revenue per outlet,    low: 1,   base: 1,   high: 1,   unit: EUR/yr,   source: "TODO"}
+
+funnel:
+  sam:   # share of the TAM you can actually serve (region, segment, channel)
+    - {name: Serviceable share,       low: 0.1, base: 0.2, high: 0.3, unit: "%",      source: "TODO"}
+  som:   # share of the SAM you can realistically win in 3–5 years
+    - {name: Obtainable share,        low: 0.02, base: 0.05, high: 0.1, unit: "%",    source: "TODO"}

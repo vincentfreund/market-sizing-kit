@@ -1,0 +1,36 @@
+name: Specialty coffee in Munich
+question: How large is the annual specialty-coffee (café) revenue pool in Munich, and what could a new café in Maxvorstadt realistically win?
+currency: EUR
+year: 2026
+primary: top_down
+
+notes: >
+  ⚠️ ILLUSTRATIVE NUMBERS. Drivers marked "assumption" are placeholders for
+  the example – replace them with sourced figures before using the result.
+  Scope: coffee drinks sold in independent specialty cafés, excl. food, chains,
+  bakeries and at-home consumption. Classic case-interview structure.
+
+approaches:
+  top_down:
+    label: Top-down (consumers)
+    drivers:
+      - {name: Munich residents,                     low: 1.50e6, base: 1.55e6, high: 1.60e6, unit: people, source: "City of Munich statistics, approx. – verify"}
+      - {name: Share buying café coffee weekly,      low: 0.30,   base: 0.40,   high: 0.50,   unit: "%",    source: "assumption"}
+      - {name: Café coffees per week (those people), low: 1.5,    base: 2.5,    high: 3.5,    unit: cups/wk, source: "assumption"}
+      - {name: Weeks per year,                       low: 48,     base: 50,     high: 52,     unit: weeks,  source: "assumption (holidays)"}
+      - {name: Specialty-café share of cups,         low: 0.10,   base: 0.15,   high: 0.22,   unit: "%",    source: "assumption"}
+      - {name: Average price per cup,                low: 3.4,    base: 3.9,    high: 4.5,    unit: EUR,    source: "assumption – check 10 café menus"}
+
+  bottom_up:
+    label: Bottom-up (cafés)
+    drivers:
+      - {name: Specialty cafés in Munich,            low: 80,     base: 110,    high: 150,    unit: cafés,  source: "assumption – count on Google Maps / guides"}
+      - {name: Coffees sold per café per day,        low: 150,    base: 220,    high: 300,    unit: cups/day, source: "assumption – observe a queue for 1 hour"}
+      - {name: Open days per year,                   low: 300,    base: 320,    high: 340,    unit: days,   source: "assumption"}
+      - {name: Average price per cup,                low: 3.4,    base: 3.9,    high: 4.5,    unit: EUR,    source: "assumption"}
+
+funnel:
+  sam:
+    - {name: Share of demand in Maxvorstadt & nearby, low: 0.08, base: 0.11, high: 0.14, unit: "%", source: "assumption – students + offices"}
+  som:
+    - {name: Share one new café can win,              low: 0.02, base: 0.04, high: 0.06, unit: "%", source: "assumption"}

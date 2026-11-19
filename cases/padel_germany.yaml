@@ -1,0 +1,36 @@
+name: Padel court rental in Germany
+question: What is the annual court-rental revenue pool for padel in Germany, and what could one new 6-court club in Munich capture?
+currency: EUR
+year: 2026
+primary: bottom_up
+
+notes: >
+  ⚠️ ILLUSTRATIVE NUMBERS. Every driver marked "assumption" is a placeholder
+  chosen to make the example run. Replace each with a sourced figure
+  (federation statistics, club websites, booking platforms, expert calls)
+  before using the result anywhere. Scope: court rental only, excl. coaching,
+  equipment, F&B and memberships. Prices incl. VAT.
+
+approaches:
+  top_down:
+    label: Top-down (players)
+    drivers:
+      - {name: German population,                 low: 83.0e6, base: 83.5e6, high: 84.0e6, unit: people,  source: "Destatis, approx. – verify latest"}
+      - {name: Share playing padel regularly,     low: 0.002,  base: 0.005,  high: 0.010,  unit: "%",     source: "assumption"}
+      - {name: Hours played per player per year,  low: 20,     base: 35,     high: 55,     unit: h/yr,    source: "assumption (≈ every 1–2 weeks)"}
+      - {name: Price per player-hour,             low: 9,      base: 11,     high: 14,     unit: EUR,     source: "assumption (court-hour price ÷ 4 players)"}
+
+  bottom_up:
+    label: Bottom-up (courts)
+    drivers:
+      - {name: Padel courts in Germany,           low: 800,    base: 1100,   high: 1400,   unit: courts,  source: "assumption – check federation / booking platforms"}
+      - {name: Bookable hours per day,            low: 12,     base: 14,     high: 16,     unit: h/day,   source: "assumption (opening hours)"}
+      - {name: Operating days per year,           low: 330,    base: 350,    high: 360,    unit: days,    source: "assumption"}
+      - {name: Utilisation,                       low: 0.35,   base: 0.50,   high: 0.65,   unit: "%",     source: "assumption – peak vs off-peak mix"}
+      - {name: Price per court-hour,              low: 36,     base: 44,     high: 52,     unit: EUR,     source: "assumption – check club websites"}
+
+funnel:
+  sam:
+    - {name: Munich metro share of German demand, low: 0.05, base: 0.07, high: 0.09, unit: "%", source: "assumption – population share ≈ 7%"}
+  som:
+    - {name: Share a new 6-court club can win,    low: 0.05, base: 0.08, high: 0.12, unit: "%", source: "assumption – depends on location & competition"}
